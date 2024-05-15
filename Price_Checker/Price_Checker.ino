@@ -124,10 +124,10 @@ void loop() {
   String full_address = "https://" + host + url;
 
 
-  //Serial.print("Requesting URL: ");
-  //Serial.println(full_address);
+  Serial.print("Requesting URL: ");
+  Serial.println(full_address);
 
-  //Serial.println("http begin");
+  Serial.println("http begin");
   http.begin(client, full_address);
   http.GET();
   // Just use a large chunk of ram until we can properly stream json.
@@ -135,7 +135,7 @@ void loop() {
   deserializeJson(product, http.getStream());
 
   if (measureJson(product) < 100) {
-    //Serial.println("Cashier");
+    Serial.println("Cashier");
     display.setCursor(0, 40);
     display.print("Cashier");
     display.display();
@@ -147,9 +147,9 @@ void loop() {
   const char* price = product[0]["price"];
   int stock = product[0]["stock_quantity"];
 
-  //Serial.println(price);
+  Serial.println(price);
   int priceLength = strlen(price);
-  //Serial.println(priceLength);
+  Serial.println(priceLength);
 
   // Adjust cursor position depending on price length.
   // This is only calibrated for the current font.
